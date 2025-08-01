@@ -1,5 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+    <!-- 
+SUMMARY OF MY PROJECT – STUDY POD BOOKING SYSTEM
+
+This project was made to help USIU students book study pods more easily and fairly. I designed the layout to be simple, clean, and responsive so it works well on different devices. I used CSS Grid and Flexbox to organize everything clearly, making it easier for users to find what they need.
+
+Some key features I added include:
+- A booking form where students can choose their pod, time slot, and enter their ID.
+- An insights section that shows data like the most booked pods and time slots to help track usage.
+- A flagged duplicates feature to detect if the same student is trying to double-book multiple pods at the same time. This helps keep the system fair.
+- A fill rate tracker to show how full each pod is getting over time.
+- An undo feature so users can fix any booking mistakes easily.
+
+I didn’t use any external libraries or frameworks—everything was done with plain HTML, CSS, and JavaScript to keep it simple and easy to understand. The design also uses USIU colors to keep it familiar and neat. My goal was to create a real solution that could actually work on campus and improve the way we manage study pods.
+
+– Patricia Naamala
+-->
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +24,20 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         
+        /* 
+SUMMARY OF MY STYLING – STUDY POD BOOKING SYSTEM
+
+I used CSS to create a clean, modern, and student-friendly interface that’s easy to navigate. I started with a reset (removing margin, padding, and setting box-sizing) to keep everything consistent. Then I used Flexbox and Grid layouts to structure the page sections clearly.
+
+The main colors are inspired by USIU branding to give the site a professional but familiar look. I made sure the booking form, insights box, and pod listings all stand out with padding, shadows, and hover effects to make the experience interactive.
+
+For responsiveness, I made sure the layout adapts on different screen sizes using media queries and flexible units like percentages and `vh/vw`. I also used some transitions for smoother hover effects to make the UI feel more polished.
+
+My goal was to keep things simple but effective easy for students to read and use without getting confused.
+
+– Patricia Naamala
+*/
+
         :root {
             --usiu-yellow: #FFD700;
             --usiu-blue: #1E3A8A;
@@ -237,7 +268,7 @@
         }
 
         .remove-btn {
-            background: linear-gradient(45deg, var(--error-neon), #ff6666);
+            background: linear-gradient(45deg, var(--usiu-blue), var(--usiu-medium-blue));
             color: white;
             border: none;
             padding: 10px 20px;
@@ -253,7 +284,7 @@
 
         .remove-btn:hover {
             transform: scale(1.1);
-            box-shadow: 0 5px 15px rgba(244, 67, 54, 0.4);
+            box-shadow: 0 5px 15px rgba(30, 58, 138, 0.4);
         }
 
         /* Insights Panel */
@@ -363,6 +394,50 @@
             font-size: 1.8em;
             font-weight: 700;
             color: var(--usiu-yellow);
+        }
+
+        /* Undo Section Styling */
+        .undo-section {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--usiu-yellow);
+        }
+
+        .undo-btn {
+            width: 100%;
+            background: linear-gradient(45deg, var(--usiu-yellow), #FFA500);
+            color: var(--usiu-blue);
+            border: none;
+            padding: 15px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .undo-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+        }
+
+        .undo-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .undo-info {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .undo-info small {
+            color: var(--text-secondary);
+            font-size: 0.85em;
         }
 
         /* Flagged Duplicates Section */
@@ -490,6 +565,16 @@
                 </form>
                 
                 <div id="errors" class="error-container"></div>
+                
+                <!-- Undo Last Booking Button -->
+                <div class="undo-section">
+                    <button type="button" id="undoBtn" class="undo-btn" disabled>
+                        <span>Undo Last Booking</span>
+                    </button>
+                    <div class="undo-info">
+                        <small>Click to undo the most recent successful booking</small>
+                    </div>
+                </div>
             </div>
 
             <!-- Bookings Table -->
@@ -566,60 +651,23 @@
     </div>
 
     <script>
-        /*
-        * USIU Study Pod Hub - Advanced Booking System
-        * 
-        * UNIQUE FEATURES THAT SET THIS APART:
-        * - Cyberpunk/Neon aesthetic with dark theme
-        * - Advanced animations and visual effects
-        * - Unique grid layout with side-by-side form and table
-        * - Custom font combinations (Orbitron + Exo 2)
-        * - Animated backgrounds and borders
-        * - Hover effects and micro-interactions
-        * - Success/error state animations
-        * - Responsive design with unique breakpoints
-        * 
-        * TECHNICAL IMPLEMENTATION:
-        * 
-        * VARIABLES & DATA TYPES:
-        * - pods: Array of objects with id (string) and capacity (number)
-        * - bookings: Array of booking objects with podId (string), time (string), students (array)
-        * - duplicateAttempts: Global counter variable (number)
-        * - Various local variables for form elements, validation results, etc.
-        * 
-        * CONTROL STRUCTURES:
-        * - if/else statements for validation logic (capacity, duplicate booking, cross-pod clash)
-        * - switch statements for error handling and time validation
-        * 
-        * LOOPS:
-        * - for loops to populate pod select options, render bookings table, calculate insights
-        * - for...in loops to iterate through objects and arrays
-        * - while loops for string parsing and validation
-        * 
-        * FUNCTIONS:
-        * - parseStudentIds(): Parse comma-separated student IDs
-        * - isWithinOperatingHours(): Validate time is between 08:00-20:00
-        * - findBooking(): Find existing booking for pod/time
-        * - hasCrossPodClash(): Check if student is booked elsewhere at same time
-        * - recomputeInsights(): Calculate all insights using loops
-        * - roundToDecimal(): Round numbers to 1 decimal place
-        * - renderBookingsTable(): Update the bookings table display
-        * - clearErrors(): Clear error messages
-        * - showError(): Display error messages
-        * 
-        * EVENTS:
-        * - DOMContentLoaded: Initialize the application
-        * - submit: Handle form submission for new bookings
-        * - click: Event delegation for remove buttons in bookings table
-        * 
-        * DOM MANIPULATION:
-        * - createElement, appendChild for dynamic table rows
-        * - textContent for safe text injection
-        * - addEventListener for event handling
-        * - getElementById for element selection
-        * - style.display for showing/hiding error container
-        * - focus() for UX improvements
-        */
+         /* 
+SUMMARY OF MY SCRIPT – STUDY POD BOOKING SYSTEM
+
+This JavaScript code handles the logic behind booking, flagging duplicate entries, and giving feedback to users. I used basic DOM manipulation and event listeners to keep everything simple and clear.
+
+Key features in my script:
+- When the user submits a booking, the script checks if the same ID has already booked that pod or slot. If it detects a duplicate, it flags it and alerts the user.
+- I added functionality to track the number of bookings per pod so we can calculate fill rates.
+- I used an undo system that allows users to remove their last booking in case of a mistake, which improves user experience.
+- There’s also logic to prevent overbooking and give alerts if someone tries to book more than once.
+
+Everything is written in plain JavaScript with no frameworks, to show I understand the core concepts. I focused on writing readable code and giving clear error messages to help users know what’s happening.
+
+– Patricia Naamala
+*/
+
+    
 
         // Global variables and data structures
         const pods = [
@@ -631,16 +679,20 @@
         let bookings = [
             { podId: "POD-A", time: "09:00", students: ["663221", "667211"] },
             { podId: "POD-B", time: "10:00", students: ["664532"] },
+            { podId: "POD-C", time: "14:00", students: ["665443", "668765"] },
+            { podId: "POD-B", time: "14:00", students: ["665443"] }, // Cross-pod conflict: student 665443 already in POD-C at 14:00
         ];
 
-        let duplicateAttempts = 0; // Global counter for duplicate booking attempts
-        let duplicateStudentsCount = 0; // Counter for duplicate student attempts
-        let crossPodConflictsCount = 0; // Counter for cross-pod conflicts
+        let duplicateAttempts = 2; // Global counter for duplicate booking attempts (start with 2 for demo)
+        let duplicateStudentsCount = 1; // Counter for duplicate student attempts (start with 1 for demo)
+        let crossPodConflictsCount = 1; // Counter for cross-pod conflicts (start with 1 for demo)
+        let bookingHistoryStack = []; // Stack to store recent successful bookings
 
         // DOM elements
         let podSelect, timeInput, studentsInput, bookingForm, errorsContainer;
         let bookingsTableBody, totalBookingsEl, uniqueStudentsEl, busiestHourEl;
         let duplicateAttemptsEl, fillRatesContainer, totalViolationsEl, duplicateStudentsEl, crossPodConflictsEl;
+        let undoBtn;
 
         // Initialize the application
         document.addEventListener('DOMContentLoaded', function() {
@@ -669,10 +721,12 @@
             totalViolationsEl = document.getElementById('totalViolations');
             duplicateStudentsEl = document.getElementById('duplicateStudents');
             crossPodConflictsEl = document.getElementById('crossPodConflicts');
+            undoBtn = document.getElementById('undoBtn');
 
             // Add event listeners
             bookingForm.addEventListener('submit', handleFormSubmit);
             bookingsTableBody.addEventListener('click', handleTableClick);
+            undoBtn.addEventListener('click', handleUndoBooking);
         }
 
         // Populate pod select options using DOM manipulation
@@ -758,19 +812,31 @@
             }
 
             // Add booking
+            let newBooking = null;
             if (existingBooking) {
                 // Add to existing booking
                 for (let i = 0; i < studentIds.length; i++) {
                     existingBooking.students.push(studentIds[i]);
                 }
+                newBooking = existingBooking;
             } else {
                 // Create new booking
-                bookings.push({
+                newBooking = {
                     podId: podId,
                     time: time,
                     students: studentIds
-                });
+                };
+                bookings.push(newBooking);
             }
+            
+            // Add to booking history stack
+            bookingHistoryStack.push({
+                booking: JSON.parse(JSON.stringify(newBooking)), // Deep copy
+                timestamp: new Date().toLocaleTimeString()
+            });
+            
+            // Enable undo button
+            undoBtn.disabled = false;
 
             // Update display
             renderBookingsTable();
@@ -921,17 +987,49 @@
                 hourCounts[hour] += booking.students.length;
             }
             
-            let busiestHour = 'None';
+            let busiestHours = [];
             let maxStudents = 0;
             
+            // Find the maximum number of students
             for (const hour in hourCounts) {
                 if (hourCounts[hour] > maxStudents) {
                     maxStudents = hourCounts[hour];
-                    busiestHour = hour;
                 }
             }
             
-            busiestHourEl.textContent = busiestHour;
+            // Find all hours with the maximum number of students
+            for (const hour in hourCounts) {
+                if (hourCounts[hour] === maxStudents && maxStudents > 0) {
+                    busiestHours.push(hour);
+                }
+            }
+            
+            // Convert 24-hour format to 12-hour format with AM/PM
+            let displayBusiestHours = 'None';
+            if (busiestHours.length > 0) {
+                const formattedHours = busiestHours.map(hour => {
+                    const hourNum = parseInt(hour.substring(0, 2));
+                    const minute = hour.substring(3, 5);
+                    let period = 'AM';
+                    let displayHour = hourNum;
+                    
+                    if (hourNum >= 12) {
+                        period = 'PM';
+                        if (hourNum > 12) {
+                            displayHour = hourNum - 12;
+                        }
+                    }
+                    if (hourNum === 0) {
+                        displayHour = 12;
+                    }
+                    
+                    return `${displayHour}:${minute}${period}`;
+                });
+                
+                displayBusiestHours = formattedHours.join(' & ');
+            }
+            
+            busiestHourEl.textContent = displayBusiestHours;
             
             // Duplicate attempts
             duplicateAttemptsEl.textContent = duplicateAttempts;
@@ -998,6 +1096,57 @@
         function showError(message) {
             errorsContainer.style.display = 'block';
             errorsContainer.textContent = message;
+        }
+
+        // Handle undo last booking
+        function handleUndoBooking() {
+            if (bookingHistoryStack.length === 0) {
+                showError("No bookings to undo.");
+                return;
+            }
+            
+            // Pop the last booking from the stack
+            const lastBooking = bookingHistoryStack.pop();
+            
+            // Find and remove the booking from the main array
+            for (let i = 0; i < bookings.length; i++) {
+                const booking = bookings[i];
+                if (booking.podId === lastBooking.booking.podId && 
+                    booking.time === lastBooking.booking.time) {
+                    
+                    // Remove the booking
+                    bookings.splice(i, 1);
+                    break;
+                }
+            }
+            
+            // Disable undo button if no more bookings in stack
+            if (bookingHistoryStack.length === 0) {
+                undoBtn.disabled = true;
+            }
+            
+            // Update display
+            renderBookingsTable();
+            recomputeInsights();
+            
+            // Show success message
+            showSuccess(`Undone booking: ${lastBooking.booking.podId} at ${lastBooking.booking.time} (${lastBooking.booking.students.join(', ')})`);
+        }
+
+        // Show success message
+        function showSuccess(message) {
+            errorsContainer.style.display = 'block';
+            errorsContainer.style.background = 'rgba(76, 175, 80, 0.1)';
+            errorsContainer.style.border = '2px solid var(--success-neon)';
+            errorsContainer.style.color = 'var(--success-neon)';
+            errorsContainer.textContent = message;
+            
+            // Reset to error styling after 3 seconds
+            setTimeout(() => {
+                errorsContainer.style.background = 'rgba(255, 68, 68, 0.1)';
+                errorsContainer.style.border = '2px solid var(--error-neon)';
+                errorsContainer.style.color = 'var(--error-neon)';
+            }, 3000);
         }
     </script>
 </body>
