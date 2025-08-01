@@ -88,25 +88,25 @@
         /* Booking Form Design */
         .booking-form {
             background: var(--card-bg);
-            border: 2px solid var(--primary-neon);
+            border: 2px solid var(--usiu-yellow);
             border-radius: 20px;
             padding: 30px;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 0 30px rgba(76, 175, 80, 0.2);
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.1);
             transition: all 0.3s ease;
         }
 
         .booking-form:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 40px rgba(76, 175, 80, 0.3);
+            box-shadow: 0 10px 40px rgba(255, 215, 0, 0.2);
         }
 
         .form-title {
             font-family: 'Inter', sans-serif;
             font-size: 1.8em;
             margin-bottom: 25px;
-            color: var(--primary-neon);
+            color: var(--usiu-blue);
             text-align: center;
             position: relative;
         }
@@ -142,14 +142,14 @@
         .form-group input:focus,
         .form-group select:focus {
             outline: none;
-            border-color: var(--primary-neon);
-            box-shadow: 0 0 20px rgba(76, 175, 80, 0.3);
+            border-color: var(--usiu-yellow);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
             transform: scale(1.02);
         }
 
         .book-btn {
             width: 100%;
-            background: linear-gradient(45deg, var(--primary-neon), var(--accent-neon));
+            background: linear-gradient(45deg, var(--usiu-blue), var(--usiu-medium-blue));
             color: white;
             border: none;
             padding: 18px;
@@ -165,7 +165,7 @@
 
         .book-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(76, 175, 80, 0.4);
+            box-shadow: 0 10px 30px rgba(30, 58, 138, 0.4);
         }
 
         .book-btn:active {
@@ -185,17 +185,17 @@
         /* Table Design */
         .bookings-section {
             background: var(--card-bg);
-            border: 2px solid var(--secondary-neon);
+            border: 2px solid var(--usiu-yellow);
             border-radius: 20px;
             padding: 30px;
-            box-shadow: 0 0 30px rgba(139, 195, 74, 0.2);
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.1);
         }
 
         .section-title {
             font-family: 'Inter', sans-serif;
             font-size: 2em;
             margin-bottom: 25px;
-            color: var(--secondary-neon);
+            color: var(--usiu-blue);
             text-align: center;
             position: relative;
         }
@@ -211,7 +211,7 @@
         }
 
         .bookings-table th {
-            background: linear-gradient(45deg, var(--secondary-neon), var(--accent-neon));
+            background: linear-gradient(45deg, var(--usiu-blue), var(--usiu-medium-blue));
             color: white;
             padding: 20px 15px;
             text-align: left;
@@ -228,12 +228,12 @@
         }
 
         .bookings-table tr:hover {
-            background: rgba(76, 175, 80, 0.1);
+            background: rgba(255, 215, 0, 0.1);
             transform: scale(1.01);
         }
 
         .bookings-table tr:hover td {
-            color: var(--primary-neon);
+            color: var(--usiu-blue);
         }
 
         .remove-btn {
@@ -259,11 +259,11 @@
         /* Insights Panel */
         .insights-panel {
             background: var(--card-bg);
-            border: 2px solid var(--accent-neon);
+            border: 2px solid var(--usiu-yellow);
             border-radius: 20px;
             padding: 30px;
             margin-top: 40px;
-            box-shadow: 0 0 30px rgba(205, 220, 57, 0.2);
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.1);
             position: relative;
             overflow: hidden;
         }
@@ -272,7 +272,7 @@
             font-family: 'Inter', sans-serif;
             font-size: 2.2em;
             margin-bottom: 30px;
-            color: var(--accent-neon);
+            color: var(--usiu-blue);
             text-align: center;
             position: relative;
         }
@@ -299,7 +299,7 @@
 
         .insight-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(205, 220, 57, 0.3);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2);
         }
 
         .insight-label {
@@ -315,7 +315,7 @@
             font-family: 'Inter', sans-serif;
             font-size: 2.5em;
             font-weight: 700;
-            color: var(--accent-neon);
+            color: var(--usiu-yellow);
         }
 
         .fill-rates-section {
@@ -326,7 +326,7 @@
             font-family: 'Inter', sans-serif;
             font-size: 1.5em;
             margin-bottom: 20px;
-            color: var(--primary-neon);
+            color: var(--usiu-blue);
             text-align: center;
         }
 
@@ -338,7 +338,7 @@
 
         .fill-rate-item {
             background: var(--darker-bg);
-            border: 2px solid var(--primary-neon);
+            border: 2px solid var(--usiu-yellow);
             border-radius: 12px;
             padding: 20px;
             text-align: center;
@@ -348,7 +348,7 @@
 
         .fill-rate-item:hover {
             transform: scale(1.05);
-            box-shadow: 0 8px 25px rgba(76, 175, 80, 0.3);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.2);
         }
 
         .fill-rate-label {
@@ -362,7 +362,69 @@
             font-family: 'Inter', sans-serif;
             font-size: 1.8em;
             font-weight: 700;
-            color: var(--primary-neon);
+            color: var(--usiu-yellow);
+        }
+
+        /* Flagged Duplicates Section */
+        .flagged-duplicates-section {
+            background: var(--card-bg);
+            border: 2px solid var(--usiu-yellow);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.1);
+        }
+
+        .flagged-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.4em;
+            font-weight: 600;
+            color: var(--usiu-blue);
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .flagged-content p {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 0.95em;
+        }
+
+        .flagged-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .flagged-stat {
+            background: var(--darker-bg);
+            border: 1px solid var(--usiu-yellow);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .flagged-stat:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.2);
+        }
+
+        .flagged-label {
+            display: block;
+            font-size: 0.9em;
+            color: var(--text-secondary);
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .flagged-value {
+            display: block;
+            font-family: 'Inter', sans-serif;
+            font-size: 1.5em;
+            font-weight: 700;
+            color: var(--usiu-yellow);
         }
 
         /* Responsive Design */
@@ -413,13 +475,13 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="timeInput">Booking Time (1-hour slots)</label>
-                        <input type="time" id="timeInput" step="3600" min="08:00" max="19:00" required>
+                        <label for="timeInput">Booking Time (1-hour slots between 08:00-19:00)</label>
+                        <input type="time" id="timeInput" step="3600" min="08:00" max="19:00" value="08:00" required>
                     </div>
                     
                     <div class="form-group">
                         <label for="studentsInput">Student IDs (comma-separated)</label>
-                        <input type="text" id="studentsInput" placeholder="e.g., SIT-001, SIT-045, SST-101" required>
+                        <input type="text" id="studentsInput" placeholder="e.g., 663221, 667211, 664532" required>
                     </div>
                     
                     <button type="submit" class="book-btn">
@@ -470,6 +532,27 @@
                 <div class="insight-card">
                     <div class="insight-label">Rule Violations</div>
                     <div class="insight-value" id="duplicateAttempts">0</div>
+                </div>
+            </div>
+            
+            <div class="flagged-duplicates-section">
+                <h3 class="flagged-title">Flagged Duplicate Attempts</h3>
+                <div class="flagged-content">
+                    <p>This section tracks all attempts to book duplicate students or cross-pod conflicts.</p>
+                    <div class="flagged-stats">
+                        <div class="flagged-stat">
+                            <span class="flagged-label">Total Violations:</span>
+                            <span class="flagged-value" id="totalViolations">0</span>
+                        </div>
+                        <div class="flagged-stat">
+                            <span class="flagged-label">Duplicate Students:</span>
+                            <span class="flagged-value" id="duplicateStudents">0</span>
+                        </div>
+                        <div class="flagged-stat">
+                            <span class="flagged-label">Cross-Pod Conflicts:</span>
+                            <span class="flagged-value" id="crossPodConflicts">0</span>
+                        </div>
+                    </div>
                 </div>
             </div>
             
@@ -546,16 +629,18 @@
         ];
 
         let bookings = [
-            { podId: "POD-A", time: "09:00", students: ["SIT-001", "SIT-045"] },
-            { podId: "POD-B", time: "10:00", students: ["SMC-210"] },
+            { podId: "POD-A", time: "09:00", students: ["663221", "667211"] },
+            { podId: "POD-B", time: "10:00", students: ["664532"] },
         ];
 
         let duplicateAttempts = 0; // Global counter for duplicate booking attempts
+        let duplicateStudentsCount = 0; // Counter for duplicate student attempts
+        let crossPodConflictsCount = 0; // Counter for cross-pod conflicts
 
         // DOM elements
         let podSelect, timeInput, studentsInput, bookingForm, errorsContainer;
         let bookingsTableBody, totalBookingsEl, uniqueStudentsEl, busiestHourEl;
-        let duplicateAttemptsEl, fillRatesContainer;
+        let duplicateAttemptsEl, fillRatesContainer, totalViolationsEl, duplicateStudentsEl, crossPodConflictsEl;
 
         // Initialize the application
         document.addEventListener('DOMContentLoaded', function() {
@@ -564,7 +649,8 @@
             renderBookingsTable();
             recomputeInsights();
             
-
+            // Set default time to 08:00
+            timeInput.value = "08:00";
         });
 
         // Initialize DOM element references
@@ -580,6 +666,9 @@
             busiestHourEl = document.getElementById('busiestHour');
             duplicateAttemptsEl = document.getElementById('duplicateAttempts');
             fillRatesContainer = document.getElementById('fillRatesContainer');
+            totalViolationsEl = document.getElementById('totalViolations');
+            duplicateStudentsEl = document.getElementById('duplicateStudents');
+            crossPodConflictsEl = document.getElementById('crossPodConflicts');
 
             // Add event listeners
             bookingForm.addEventListener('submit', handleFormSubmit);
@@ -621,7 +710,7 @@
 
             // Validate operating hours
             if (!isWithinOperatingHours(time)) {
-                showError("Bookings are only allowed between 08:00 and 20:00.");
+                showError("Bookings are only allowed between 08:00 and 19:00.");
                 return;
             }
 
@@ -647,6 +736,7 @@
 
             if (duplicateStudents.length > 0) {
                 duplicateAttempts++;
+                duplicateStudentsCount++;
                 showError(`Duplicate booking detected for students: ${duplicateStudents.join(', ')}`);
                 return;
             }
@@ -662,6 +752,7 @@
 
             if (clashStudents.length > 0) {
                 duplicateAttempts++;
+                crossPodConflictsCount++;
                 showError(`Students already booked in another pod at this time: ${clashStudents.join(', ')}`);
                 return;
             }
@@ -698,15 +789,20 @@
             for (let i = 0; i < parts.length; i++) {
                 const trimmed = parts[i].trim();
                 if (trimmed.length > 0) {
-                    // Normalize to uppercase for consistency
-                    studentIds.push(trimmed.toUpperCase());
+                    // Validate USIU student ID format (6 digits)
+                    if (/^\d{6}$/.test(trimmed)) {
+                        studentIds.push(trimmed);
+                    } else {
+                        showError(`Invalid student ID format: ${trimmed}. USIU student IDs must be 6 digits (e.g., 663221)`);
+                        return [];
+                    }
                 }
             }
             
             return studentIds;
         }
 
-        // Check if time is within operating hours (08:00-20:00)
+        // Check if time is within operating hours (08:00-19:00)
         function isWithinOperatingHours(timeString) {
             if (!timeString || timeString.length !== 5) {
                 return false;
@@ -780,7 +876,7 @@
                     <td>${booking.time}</td>
                     <td>${booking.students.length}</td>
                     <td>${booking.students.join(', ')}</td>
-                    <td><button class="remove-btn">Remove</button></td>
+                    <td><button class="remove-btn">Delete Booking</button></td>
                 `;
                 
                 bookingsTableBody.appendChild(row);
@@ -839,6 +935,11 @@
             
             // Duplicate attempts
             duplicateAttemptsEl.textContent = duplicateAttempts;
+            
+            // Update flagged duplicates section
+            totalViolationsEl.textContent = duplicateAttempts;
+            duplicateStudentsEl.textContent = duplicateStudentsCount;
+            crossPodConflictsEl.textContent = crossPodConflictsCount;
             
             // Fill rates per pod
             renderFillRates();
